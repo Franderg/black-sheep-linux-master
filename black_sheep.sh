@@ -65,11 +65,11 @@ function ldap {
     sudo apt-get install libpam-ldapd
 
     # Instalación de archivos de configuración
-    # sudo cp /etc/nslcd.conf /etc/nslcd.conf.original
-    # sudo install --owner=root --group=nslcd --mode=640 ./conf/etc/nslcd.conf /etc/nslcd.conf
+    sudo cp /etc/nslcd.conf /etc/nslcd.conf.original
+    sudo install --owner=root --group=nslcd --mode=640 ./conf/etc/nslcd.conf /etc/nslcd.conf
 
-    # sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.original
-    # $INSTALL ./conf/etc/nsswitch.conf /etc/nsswitch.conf
+    sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.original
+    $INSTALL ./conf/etc/nsswitch.conf /etc/nsswitch.conf
 
     # Configurar LigthDM para ingreso vía LDAP
     #sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.original
@@ -129,7 +129,7 @@ config)
     # Configura la estación
     #updates
     nfs
-    #ldap
+    ldap
     users
     hostname
     #clean
