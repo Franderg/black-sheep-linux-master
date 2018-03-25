@@ -2,7 +2,7 @@ Acerca de
 =========
 
 Black Sheep Linux es un pequeño script que adapta una distribución estándar de
-Debian a las necesidades de la carrera de Ingeniería en Computación del
+Debian a las necesidades de la Escuela de Ingeniería en Computación del
 Instituto Tecnológico de Costa Rica.
 
 ![Black Sheep Logo](https://raw.github.com/carlos-jenkins/black-sheep-linux/master/images/logo_small.png "Black Sheep Logo")
