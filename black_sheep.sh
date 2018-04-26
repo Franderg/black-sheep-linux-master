@@ -112,6 +112,7 @@ check)
 
 config)
     # Configura la estación
+    #deb http://ftp.debian.org/debian stretch-backports main contrib non-free
     nfs
     ldap
     users
