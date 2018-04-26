@@ -3,6 +3,6 @@ Type=Application
 Name=Eclipse Neon
 Comment=Eclipse Integrated Development Environment
 Icon=eclipse
-Exec=~/eclipse/java-latest-released/eclipse/eclipse
+Exec=/local/home/$USER/eclipse/java-latest-released/eclipse/eclipse
 Terminal=false
 Categories=Development;IDE;Java;
