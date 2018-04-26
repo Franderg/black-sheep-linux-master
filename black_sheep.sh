@@ -76,10 +76,11 @@ function repos {
 
 	echo "Se agregan repositorios correspondientes a la version de Debian "
 
-	sudo mv /etc/apt/source.list /etc/apt/source.list.original
-	sudo cp config/etc/apt/source.list.${VERSION_OS[1]} /etc/apt/source.list
+	sudo mv /etc/apt/sources.list /etc/apt/sources.list.original
+	sudo cp conf/etc/apt/sources.list.${VERSION_OS[1]} /etc/apt/sources.list
 	#echo "Se realiza update"
-	sudo apt-get update && sudo apt-get upgrade -t stretch-backports
+	sudo apt-get update
+	sudo apt-get upgrade -t stretch-backports
 
 }
 
@@ -88,7 +89,7 @@ function home {
     # Mover el home del administrador a la carpeta de homes locales
 
     mkdir -p /local/home/administrator
-    cp -R * /home/administrator /local/home/administrator
+    cp -R .* /home/administrator /local/home/
     chown -R administrator:administrator /local/home/administrator
     usermod -d /local/home/administrator administrator
 
