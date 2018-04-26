@@ -78,9 +78,12 @@ function repos {
 
 	sudo mv /etc/apt/sources.list /etc/apt/sources.list.original
 	sudo cp conf/etc/apt/sources.list.${VERSION_OS[1]} /etc/apt/sources.list
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+	echo "deb http://download.mono-project.com/repo/debian vs-stretch main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
 	#echo "Se realiza update"
 	sudo apt-get update
 	sudo apt-get upgrade -t stretch-backports
+	wget -O eclipse.tar.gz -P downloads http://eclipse.c3sl.ufpr.br/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
 
 }
 
@@ -124,14 +127,14 @@ function help {
 case "$1" in
 
 
-config_home)
+config)
 	#configura el home, se ejecuta como root
 	home
-	logout
+	exit
 ;;
 
-config)
-    # Configura la estación
+install)
+    # Configura la estación    
     repos
     nfs
     ldap
@@ -156,7 +159,7 @@ manual)
 ;;
 
 *)
-    echo "Usage: `basename $0` [config|manual|config_home]"
+    echo "Usage: `basename $0` [config|manual|install]"
     exit 1
 ;;
 
