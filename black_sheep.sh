@@ -12,11 +12,13 @@ VERSION_OS=(`echo $(lsb_release -c) | tr ':' ' '`)
 # Check permissions      #
 ##########################
 
+
+#Se comenta para ejecutarlo como root
 # Check for permissions errors
-if [ `id -u` == 0 ]; then
-    echo "[ERROR] This script should not be executed as root. Run it a a sudo-capable user."
-    exit 1
-fi
+#if [ `id -u` == 0 ]; then
+#    echo "[ERROR] This script should not be executed as root. Run it a a sudo-capable user."
+#    exit 1
+#fi
 
 # Check if user can do sudo
 echo "This application needs root privileges."
@@ -71,27 +73,26 @@ function ldap {
 }
 
 function repos {
-	
+
 	echo "Se agregan repositorios correspondientes a la version de Debian "
-	
+
 	sudo mv /etc/apt/source.list /etc/apt/source.list.original
 	sudo cp config/etc/apt/source.list.${VERSION_OS[1]} /etc/apt/source.list
 	#echo "Se realiza update"
 	sudo apt-get update && sudo apt-get upgrade -t stretch-backports
-	
+
 }
 
 function home {
-	    
-	# Mover el home del administrador a la carpeta de homes locales
-    
+
+    # Mover el home del administrador a la carpeta de homes locales
+
     mkdir -p /local/home/administrator
-    cp -R * /home/administrator/ /local/home/administrator/
+    cp -R * /home/administrator /local/home/administrator
     chown -R administrator:administrator /local/home/administrator
     usermod -d /local/home/administrator administrator
-	
-}
 
+}
 
 function users {
 
@@ -125,9 +126,8 @@ case "$1" in
 config_home)
 	#configura el home, se ejecuta como root
 	home
-
+	logout
 ;;
-
 
 config)
     # Configura la estación
