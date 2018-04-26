@@ -6,6 +6,7 @@
 
 INSTALL='sudo install --owner=root --group=root --mode=644'
 
+VERSION_OS=(`echo $(lsb_release -c) | tr ':' ' '`)
 
 ##########################
 # Check permissions      #
@@ -69,6 +70,29 @@ function ldap {
 
 }
 
+function repos {
+	
+	echo "Se agregan repositorios correspondientes a la version de Debian "
+	
+	sudo mv /etc/apt/source.list /etc/apt/source.list.original
+	sudo cp config/etc/apt/source.list.${VERSION_OS[1]} /etc/apt/source.list
+	#echo "Se realiza update"
+	sudo apt-get update && sudo apt-get upgrade -t stretch-backports
+	
+}
+
+function home {
+	    
+	# Mover el home del administrador a la carpeta de homes locales
+    
+    mkdir -p /local/home/administrator
+    cp -R * /home/administrator/ /local/home/administrator/
+    chown -R administrator:administrator /local/home/administrator
+    usermod -d /local/home/administrator administrator
+	
+}
+
+
 function users {
 
     # Crea home para usuarios locales
@@ -82,15 +106,7 @@ function users {
         echo "Ignoring the addition of local users"
     fi
 
-    # Mover el home del administrador a la carpeta de homes locales
-    # Ejecutar los siguientes comandos como root:
-    #sudo mkdir -p /local/home/administrator
-    #sudo cp /etc/skel/* /local/home/administrator
-    #sudo cp /etc/skel/.* /local/home/administrator
-    #sudo chown -R administrator:administrator /local/home/administrator
-    #sudo usermod -d /local/home/administrator administrator
 }
-
 
 function help {
 
@@ -104,15 +120,18 @@ function help {
 ##########################
 
 case "$1" in
-check)
-    # Verifica la disponibilidad de los paquetes
-    repos
-    ./package_builder.py check
+
+
+config_home)
+	#configura el home, se ejecuta como root
+	home
+
 ;;
+
 
 config)
     # Configura la estación
-    #deb http://ftp.debian.org/debian stretch-backports main contrib non-free
+    repos
     nfs
     ldap
     users
@@ -136,7 +155,7 @@ manual)
 ;;
 
 *)
-    echo "Usage: `basename $0` [check|install|config|manual]"
+    echo "Usage: `basename $0` [config|manual|config_home]"
     exit 1
 ;;
 

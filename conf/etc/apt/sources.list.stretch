@@ -1,0 +1,13 @@
+
+deb http://ftp.debian.org/debian/ stretch main contrib non-free
+deb-src http://ftp.debian.org/debian/ stretch main contrib non-free
+
+# deb http://ftp.debian.org/debian/ stretch/updates main
+# deb-src http://ftp.debian.org/debian/ stretch/updates main
+
+# stretch-updates, previously known as 'volatile'
+deb http://ftp.debian.org/debian/ stretch-updates contrib main non-free
+deb-src http://ftp.debian.org/debian/ stretch-updates main contrib non-free
+
+deb http://security.debian.org/ stretch/updates contrib main non-free
+deb http://ftp.debian.org/debian stretch-backports main contrib non-free
