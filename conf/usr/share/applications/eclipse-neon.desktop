@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Eclipse
+Name=Eclipse Neon
 Comment=Eclipse Integrated Development Environment
 Icon=eclipse
 Exec=~/eclipse/java-latest-released/eclipse/eclipse

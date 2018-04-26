@@ -91,7 +91,9 @@ function repos {
 	tar -xvzf eclipse.tar.gz
 	rm eclipse.tar.gz
 	mv eclipse-installer downloads/
-	cp conf/usr/share/applications/eclipse.desktop /usr/share/applications/eclipse.desktop 
+	sudo cp conf/usr/share/applications/eclipse-neon.desktop /usr/share/applications/eclipse-neon.desktop
+	wget -O atom.deb https://atom.io/download/deb
+	mv atom.deb downloads/
 }
 
 function home {
