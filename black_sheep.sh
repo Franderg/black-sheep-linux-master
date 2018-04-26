@@ -30,10 +30,6 @@ fi
 # Station configuration  #
 ##########################
 
-function environments {
-
-    sudo apt-get --yes install cinnamon
-}
 
 function hostname {
 
@@ -71,9 +67,6 @@ function ldap {
     sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.original
     $INSTALL ./conf/etc/nsswitch.conf /etc/nsswitch.conf
 
-    # Configurar LigthDM para ingreso vía LDAP
-    #sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.original
-    #$INSTALL ./conf/etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf
 }
 
 function users {
@@ -98,14 +91,6 @@ function users {
     #sudo usermod -d /local/home/administrator administrator
 }
 
-function clean {
-
-    # Elimina el cache de paquetes
-    sudo apt-get clean
-
-    # Elimina el archivo de MAC Address
-    sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-}
 
 function help {
 
@@ -127,12 +112,10 @@ check)
 
 config)
     # Configura la estación
-    #updates
     nfs
     ldap
     users
     hostname
-    #clean
 ;;
 
 manual)
