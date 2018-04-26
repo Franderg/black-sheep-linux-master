@@ -87,9 +87,11 @@ function repos {
 	echo "Descargando paquetes extra "
 	
 	wget -O eclipse.tar.gz http://eclipse.c3sl.ufpr.br/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
-	mkdir downloads
-	mv eclipse.tar.gz downloads/eclipse.tar.gz
-
+	mkdir downloads	
+	tar -xvzf eclipse.tar.gz
+	rm eclipse.tar.gz
+	mv eclipse-installer downloads/
+	cp conf/usr/share/applications/eclipse.desktop /usr/share/applications/eclipse.desktop 
 }
 
 function home {

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Eclipse
+Comment=Eclipse Integrated Development Environment
+Icon=eclipse
+Exec=~/eclipse/java-latest-released/eclipse/eclipse
+Terminal=false
+Categories=Development;IDE;Java;
