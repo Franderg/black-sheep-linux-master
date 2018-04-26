@@ -83,7 +83,12 @@ function repos {
 	#echo "Se realiza update"
 	sudo apt-get update
 	sudo apt-get upgrade -t stretch-backports
-	wget -O eclipse.tar.gz -P downloads http://eclipse.c3sl.ufpr.br/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
+	
+	echo "Descargando paquetes extra "
+	
+	wget -O eclipse.tar.gz http://eclipse.c3sl.ufpr.br/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
+	mkdir downloads
+	mv eclipse.tar.gz downloads/eclipse.tar.gz
 
 }
 
