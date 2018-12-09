@@ -19,6 +19,7 @@ Licencia
 ========
 
 Este programa se basa en el creado por Carlos Jenkins <carlos@jenkins.co.cr> 
+https://github.com/ACTLibre/black-sheep-linux
 
 Este programa es software libre y al igual que el original puede ser 
 redistribuido y/o modificado bajo los términos de GNU General Public License 
